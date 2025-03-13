@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lingocast/pages/translate_page.dart';
+import 'package:lingocast/widgets/buttons.dart';
 import 'package:lingocast/widgets/functions.dart';
 import 'package:lingocast/widgets/variables.dart';
 
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> {
             Text(
               'LingoCast',
               style: TextStyle(
-                color: titleColour,
+                color: terracottaColour,
                 fontSize: 50,
                 fontFamily: "TitleFont",
                 fontWeight: FontWeight.normal,
@@ -47,28 +48,11 @@ class _HomePageState extends State<HomePage> {
             // start button
             Padding(
               padding: const EdgeInsets.only(top: 30),
-              child: TextButton(
+              child: SimpleButton(
                 onPressed: () {
                   navigate(context, 200, TranslatePage());
                 },
-                style: TextButton.styleFrom(
-                  backgroundColor: buttonColour,
-                  foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-                  shape: RoundedRectangleBorder(
-                    // rounded corners
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  elevation: 5, // shadow effect
-                ),
-                child: Text(
-                  "Start",
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontFamily: "TextFont",
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+                buttonText: 'Start',
               ),
             ),
           ],

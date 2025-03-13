@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart' as p;
 
 void navigate(context, int durationMilliseconds, StatefulWidget nextPage) {
   // navigate to other page
@@ -14,4 +15,8 @@ void navigate(context, int durationMilliseconds, StatefulWidget nextPage) {
       },
     ),
   );
+}
+
+String getLanguageNameFromPath(String path) {
+  return p.basenameWithoutExtension(path).split('/').last;
 }

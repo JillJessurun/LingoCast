@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lingocast/widgets/buttons.dart';
 import 'package:lingocast/widgets/pageUI.dart';
-import 'package:lingocast/widgets/variables.dart';
+import 'package:lingocast/widgets/widgets.dart';
 
 // translate page
 class TranslatePage extends StatefulWidget {
@@ -36,55 +37,54 @@ class Content extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          // drop down menu's
           Padding(
             padding: const EdgeInsets.only(bottom: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // text
-                Text(
-                  'Lets talk!',
-                  style: TextStyle(
-                    color: textColour,
-                    fontSize: 26,
-                    fontFamily: "TextFont",
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.none,
-                  ),
-                ),
-
-                // smiley
                 Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: Image.asset(
-                    'assets/images/smiley.png',
-                    width: 20,
-                    height: 20,
-                  ),
+                  padding: const EdgeInsets.only(right: 20),
+                  child: LanguageDropDown(),
                 ),
+                LanguageDropDown(),
               ],
             ),
           ),
 
           // mic button
-          Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              color: buttonColour,
-              shape: BoxShape.circle,
-            ),
-            child: IconButton(
-              onPressed: () {
-                print('Recording audio....');
-              },
-              icon: Icon(Icons.mic, color: appColour),
-              iconSize: 30,
-            ),
+          RoundButton(
+            onPressed: () {
+              print('Recording audio....');
+            },
+            icon: Icons.mic,
           ),
         ],
       ),
     );
   }
 }
+
+/*
+Text(
+  'Start recording!',
+  style: TextStyle(
+    color: textColour,
+    fontSize: 26,
+    fontFamily: "TextFont",
+    fontWeight: FontWeight.bold,
+    decoration: TextDecoration.none,
+  ),
+),
+
+// smiley
+Padding(
+  padding: const EdgeInsets.only(left: 20),
+  child: Image.asset(
+    'assets/images/smiley.png',
+    width: 20,
+    height: 20,
+  ),
+),
+*/

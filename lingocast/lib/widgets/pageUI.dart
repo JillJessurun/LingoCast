@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lingocast/widgets/variables.dart';
 
 class PageUI extends StatelessWidget {
   const PageUI({super.key});
@@ -6,7 +7,7 @@ class PageUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 215, 197),
+      backgroundColor: appColour,
       body: Stack(fit: StackFit.expand, children: [
           
         ],

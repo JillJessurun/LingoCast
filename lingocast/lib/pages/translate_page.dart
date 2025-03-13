@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lingocast/widgets/buttons.dart';
 import 'package:lingocast/widgets/pageUI.dart';
+import 'package:lingocast/widgets/variables.dart';
 import 'package:lingocast/widgets/widgets.dart';
 
 // translate page
@@ -27,8 +28,20 @@ class _TranslatePageState extends State<TranslatePage> {
   }
 }
 
-class Content extends StatelessWidget {
+class Content extends StatefulWidget {
   const Content({super.key});
+
+  @override
+  _ContentState createState() => _ContentState();
+}
+
+class _ContentState extends State<Content> {
+  // Function to update language
+  void updateLanguage(String newLanguage1) {
+    setState(() {
+      currentLanguagePath1 = newLanguage1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +50,7 @@ class Content extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // drop down menu's
+          // Drop down menus
           Padding(
             padding: const EdgeInsets.only(bottom: 20),
             child: Row(
@@ -46,20 +59,54 @@ class Content extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
-                  child: LanguageDropDown(),
+                  child: LanguageDropDown(
+                    onLanguageSelected: updateLanguage,
+                    firstFlag: currentLanguagePath1, // Pass the callback here
+                  ),
                 ),
-                LanguageDropDown(),
+                LanguageDropDown(
+                  onLanguageSelected: (language) {
+                    setState(() {
+                      currentLanguagePath2 = language;
+                    });
+                  },
+                  firstFlag: currentLanguagePath2,
+                ),
               ],
             ),
           ),
 
-          // mic button
+          // Mic button
           RoundButton(
             onPressed: () {
               print('Recording audio....');
             },
             icon: Icons.mic,
           ),
+          /*
+          // Language display
+          Text(
+            currentLanguagePath1,
+            style: TextStyle(
+              color: textColour,
+              fontSize: 12,
+              fontFamily: "TextFont",
+              fontWeight: FontWeight.bold,
+              decoration: TextDecoration.none,
+            ),
+          ),
+
+          Text(
+            currentLanguagePath2,
+            style: TextStyle(
+              color: textColour,
+              fontSize: 12,
+              fontFamily: "TextFont",
+              fontWeight: FontWeight.bold,
+              decoration: TextDecoration.none,
+            ),
+          ),
+          */
         ],
       ),
     );

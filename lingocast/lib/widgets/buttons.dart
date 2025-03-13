@@ -19,7 +19,11 @@ class SimpleButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: buttonColour,
         foregroundColor: buttonTextColour,
-        textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        textStyle: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          fontFamily: "TextFont",
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             buttonRounding,
@@ -62,7 +66,7 @@ class CustomIconButton extends StatelessWidget {
       ),
       child: Image.asset(
         currentLanguage,
-        height: iconSize,
+        height: flagHeight,
       ), // Display the current language icon
     );
   }
@@ -89,7 +93,7 @@ class RoundButton extends StatelessWidget {
         child: Center(
           child: IconButton(
             onPressed: onPressed,
-            icon: Icon(icon, color: buttonTextColour),
+            icon: Icon(icon, color: buttonIconColour),
             iconSize: iconSize,
             padding: EdgeInsets.zero, // removes internal padding
             constraints: const BoxConstraints(), // removes extra constraints

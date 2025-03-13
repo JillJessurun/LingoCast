@@ -19,14 +19,24 @@ final List<String> languagePaths = [
 ];
 
 class LanguageDropDown extends StatefulWidget {
-  const LanguageDropDown({super.key});
+  final ValueChanged<String>
+  onLanguageSelected; // Callback to notify parent when language is selected
+  final String firstFlag;
+
+  const LanguageDropDown({
+    super.key,
+    required this.onLanguageSelected,
+    required this.firstFlag,
+  });
 
   @override
-  _LanguageDropDownState createState() => _LanguageDropDownState();
+  _LanguageDropDownState createState() => _LanguageDropDownState(firstFlag);
 }
 
 class _LanguageDropDownState extends State<LanguageDropDown> {
-  String currentLanguage = "assets/flags/English.jpg"; // Default language
+  String currentLanguage;
+
+  _LanguageDropDownState(this.currentLanguage);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +46,7 @@ class _LanguageDropDownState extends State<LanguageDropDown> {
         final Offset offset = button.localToGlobal(Offset.zero);
         _showMenu(context, offset);
       },
-      currentLanguage: currentLanguage, // Pass the current language here
+      currentLanguage: currentLanguage,
     );
   }
 
@@ -64,8 +74,13 @@ class _LanguageDropDownState extends State<LanguageDropDown> {
                     child: LanguageButton(
                       onPressed: () {
                         setState(() {
-                          currentLanguage = languagePath; // Update the language
+                          // Update the local language
+                          currentLanguage = languagePath;
                         });
+
+                        // Notify the parent about the language change
+                        widget.onLanguageSelected(languagePath);
+
                         Navigator.pop(context); // Close the popup
                       },
                       languageIconPath: languagePath,

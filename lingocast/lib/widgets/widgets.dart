@@ -9,7 +9,7 @@ final List<String> languagePaths = [
   "assets/flags/Spanish.png",
   "assets/flags/French.png",
   "assets/flags/German.png",
-  "assets/flags/Portugese.png",
+  "assets/flags/Portuguese.png",
   "assets/flags/Dutch.png",
   "assets/flags/Russian.png",
   "assets/flags/Greek.png",
